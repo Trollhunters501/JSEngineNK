@@ -1,6 +1,8 @@
 package mod.loader;
 
 import cn.nukkit.Player;
+import java.io.*;
+import java.lang.reflect.*;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.event.Event;
@@ -12,11 +14,9 @@ import cn.nukkit.utils.TextFormat;
 import mod.loader.script.FunctionManager;
 
 import javax.script.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import jdk.nashorn.api.scripting.*;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class Loader extends PluginBase implements Listener {
 
@@ -24,15 +24,17 @@ public class Loader extends PluginBase implements Listener {
 
     @Override
     public void onEnable() {
-        final ScriptEngineManager manager = new ScriptEngineManager();
-        engine = manager.getEngineByMimeType("text/javascript");
+        final NashornScriptEngineFactory manager = new NashornScriptEngineFactory();
+        engine = manager.getScriptEngine("--language=es6");
         if (engine == null) {
             getLogger().error("No JavaScript engine was found!");
+            getServer().getPluginManager().disablePlugin(this);
             return;
         }
         if (!(engine instanceof Invocable)) {
             getLogger().error("JavaScript engine does not support the Invocable API!");
             engine = null;
+            getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
@@ -42,18 +44,26 @@ public class Loader extends PluginBase implements Listener {
         engine.put("plugin", this);
         engine.put("manager", new FunctionManager(this));
         engine.put("logger", getLogger());
+        engine.put("console", getLogger());
         engine.put("window", getLogger());
-
+        engine.put("global", this);
+        engine.put("self", this);
+        engine.put("process", "{env: {}}");
+        engine.put("Object.assign", "function (t) { for (var s, i = 1, n = arguments.length; i < n; i++) { s = arguments[i]; for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p]; } return t; }");
         getDataFolder().mkdir();
-        saveResource("init.js");
-
+        saveResource("example.js");
+        try{
+            engine.eval("var script = {}; script.$__getScript__$ = []; script.getScriptByName = function(name){ for(var i in script.$__getScript__$){ if(script.$__getScript__$[i].name == name){ return true; } if(i == script.$__getScript__$.length){ return false; } } }; script.$__getScriptNum__$ = 0; script.registerScript = function(plugin_yml){ if(script.$__getScriptNum__$ == 0){ script.$__getScriptNum__$ = 1; } script.$__getScript__$[script.$__getScriptNum__$] = plugin_yml; script.$__getScriptNum__$++; }; script.$__PlayerJoinEvent__$ = []; script.$__PlayerJoinEventNum__$ = 0; script.$__ServerCommandEvent__$ = []; script.$__ServerCommandEventNum__$ = 0; script.$__PlayerPreLoginEvent__$ = []; script.$__PlayerPreLoginEventNum__$ = 0; script.$__BlockBreakEvent__$ = []; script.$__BlockBreakEventNum__$ = 0; script.$__PlayerMoveEvent__$ = []; script.$__PlayerMoveEventNum__$ = 0; script.$__PlayerQuitEvent__$ = []; script.$__PlayerQuitEventNum__$ = 0; script.$__BlockPlaceEvent__$ = []; script.$__BlockPlaceEventNum__$ = 0; script.$__PlayerCommandPreprocessEvent__$ = []; script.$__PlayerCommandPreprocessEventNum__$ = 0; script.$__InventoryTransactionEvent__$ = []; script.$__InventoryTransactionEventNum__$ = 0; script.$__PlayerInteractEvent__$ = []; script.$__PlayerInteractEventNum__$ = 0; script.$__EntitySpawnEvent__$ = []; script.$__EntitySpawnEventNum__$ = 0; script.addEventListener = function(event, callback){ switch(event){ case 'PlayerJoinEvent': script.$__PlayerJoinEvent__$[script.$__PlayerJoinEventNum__$] = function(event){ callback(event); }; script.$__PlayerJoinEventNum__$++; break; case 'PlayerPreLoginEvent': script.$__PlayerPreLoginEvent__$[script.$__PlayerPreLoginEventNum__$] = function(event){ callback(event); }; script.$__PlayerPreLoginEventNum__$++; break; case 'PlayerQuitEvent': script.$__PlayerQuitEvent__$[script.$__PlayerQuitEventNum__$] = function(event){ callback(event); }; script.$__PlayerQuitEventNum__$++; break; case 'BlockBreakEvent': script.$__BlockBreakEvent__$[script.$__BlockBreakEventNum__$] = function(event){ callback(event); }; $__BlockBreakEventNum__$++; break; case 'BlockPlaceEvent': script.$__BlockPlaceEvent__$[script.$__BlockPlaceEventNum__$] = function(event){ callback(event); }; $__BlockPlaceEventNum__$++; break; case 'PlayerCommandPreprocessEvent': script.$__PlayerCommandPreprocessEvent__$[script.$__PlayerCommandPreprocessEventNum__$] = function(event){ callback(event); }; $__PlayerCommandPreprocessEvent__$++; break; case 'InventoryTransactionEvent': script.$__InventoryTransactionEvent__$[$__InventoryTransactionEventNum__$] = function(event){ callback(event); }; script.$__InventoryTransactionEvent__$++; break; case 'PlayerInteractEvent': script.$__PlayerInteractEvent__$[$__PlayerInteractEventNum__$] = function(event){ callback(event); }; script.$__PlayerInteractEventNum++; break; case 'ServerCommandEvent': script.$__ServerCommandEvent__$[script.$__ServerCommandEventNum__$] = function(event){ callback(event); }; script.$__ServerCommandEventNum__$++; break; case 'PlayerMoveEvent': script.$__PlayerMoveEvent__$[script.$__PlayerMoveEventNum__$] = function (event){ callback(event); }; script.$__PlayerMoveEventNum__$++; break; case 'EntitySpawnEvent': script.$__EntitySpawnEvent__$[script.$__EntitySpawnEventNum__$] = function (event){ callback(event); }; script.$__EntitySpawnEventNum++; break; } };");
+        }catch(final Exception e){
+            getLogger().error("Error!: ", e);
+        }
 
         for (File file : Objects.requireNonNull(getDataFolder().listFiles())) {
             if(file.isDirectory()) continue;
             if(file.getName().contains(".js")){
                 try (final Reader reader = new InputStreamReader(new FileInputStream(file))) {
                     engine.eval(reader);
-                    getLogger().warning("Loaded Script: " + file.getName());
+                    getLogger().info("Loaded Script: " + file.getName());
                 } catch (final Exception e) {
                     getLogger().error("Could not load " + file.getName(), e);
                 }
@@ -100,11 +110,11 @@ public class Loader extends PluginBase implements Listener {
     }
 
     public synchronized void call(String functionName, Object... args){
-        if(engine.get(functionName) == null){
+        if(engine.get("$$_"+functionName+"_$$") == null){
             return;
         }
         try {
-            ((Invocable) engine).invokeFunction(functionName, args);
+            ((Invocable) engine).invokeFunction("$$_"+functionName+"_$$", args);
         } catch (final Exception se) {
             getLogger().error("Error while calling " + functionName, se);
             se.printStackTrace();
