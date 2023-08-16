@@ -9,6 +9,11 @@ script.registerScript({
 //You can register your script so that it appears in the list of scripts with the command /scripts or also with the command /version or /ver
 //The mandatory parameters are: author or authors, name, version and description optional: website
 
+//Use Java files
+var playertest = Java.type("cn.nukkit.Player");
+//The Player file you can see the Nukkit API in their official documentation on how to use the files! (I recommend using hard to replicate variables as another script may use the same variable)
+var IOExeptionTest = Java.type("java.io.IOException");
+//java vanilla
 //Commands:
 manager.createCommand("name", "descricao do comando", "functiondele");
 // o name = Nome do Comando, descrição do comando, functiondela é a função que será executada
