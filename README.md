@@ -1,21 +1,31 @@
-# ModLoader
+# JSEngineNK
 Nukkit plugin, enable to load javascript! very simple create systems!!
 Nukkit plugin - Allows you to load Javascript modules! 
 # How to use?
 - Create javascript archive, example: mod.js
-- Drop archive in plugins/ModLoader/mod.js
+- Drop archive in plugins/JSEngineNK/mod.js
 - Create your code!
 - Start your server! Instantly run
 
-- examples can be found (here)[https://github.com/RedstoneAlmeida/ModLoader/tree/master/examples]
+- examples can be found (here) [https://github.com/Trollhunters501/JSEngineNK/tree/master/examples]
 
 # Basic JavaScript API loaded!
 - Global Variables:
 ```javascript
 var server; return getServer();
 var plugin; return ModLoader Plugin MainClass;
+var global; return ModLoader Plugin MainClass;
+var self; return ModLoader Plugin MainClass;
+Object.entries; it's a small polyfill
+Object.assign; it's a small polyfill
 var manager; return FunctionManager Class, Using to create Commands e Loops
+var script; return A class that registers scripts and events
 var logger; return Console Logger Input
+var console; return Console Logger Input
+var window; return Console Logher Input
+var fetch; return Fetch API by Creadores Program
+
+
 var players; return All Online Players
 ```
 
@@ -52,12 +62,10 @@ function taskloop(currentTick){
 
 - Run Events:
 ```javascript
-function PlayerJoinEvent(event){
+script.addEventListener("PlayerJoinEvent", function(event){
     var player = event.getPlayer();
     player.sendMessage("welcome to Server!");
-}
-
-// function BlockBreakEvent(event){}
+});
 // ready, start your server and test!
 ```
 
@@ -67,4 +75,17 @@ var config = manager.createConfig(manager.getFile("folder", "archive"), 2); // 2
 
 config.set("key", "value");
 config.save();
+```
+
+- Register Script
+```javascript
+script.registerScript({
+    name: "TestScript",
+    version: "1.0",
+    description: "The Test!",
+    website: "https://github.com/Trollhunters501/JSEngineNK/",
+    authors: ["Creadores Program & RedstoneAlmeida"]
+});
+//You can register your script so that it appears in the list of scripts with the command /scripts or also with the command /version or /ver
+//The mandatory parameters are: author or authors, name, version and description optional: website
 ```
