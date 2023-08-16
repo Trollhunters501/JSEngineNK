@@ -1,4 +1,4 @@
-#Supported Events:
+#Supported Events:<br/>
 You can see what each event does in the Nukkit!
 You can tell us on discord or on the nukkit page if you want us to add more events!
 
