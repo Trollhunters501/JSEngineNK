@@ -62,3 +62,8 @@ function taskloop(currentTick){
 }
 //know if there is any script with the name
 script.getScriptByName("here the name of the script!");
+
+//These are isolated functions that means that the variables and functions inside it cannot be executed and neither can events nor tasks be registered!
+(function(){
+  //code...
+})();
