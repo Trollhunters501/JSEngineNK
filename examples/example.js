@@ -60,3 +60,5 @@ function tasknormal(currentTick){
 function taskloop(currentTick){
     print('sou taskloop');
 }
+//know if there is any script with the name
+script.getScriptByName("here the name of the script!");
