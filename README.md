@@ -96,4 +96,6 @@ var playertest = Java.type("cn.nukkit.Player");
 //The Player file you can see the Nukkit API in their official documentation on how to use the files! (I recommend using hard to replicate variables as another script may use the same variable)
 var IOExeptionTest = Java.type("java.io.IOException");
 //java vanilla
+var ContentType = Packages.org.apache.http.entity.ContentType;
+//Packages which are not in Java Vanila or Nukkit 
 ```
