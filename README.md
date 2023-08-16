@@ -99,3 +99,9 @@ var IOExeptionTest = Java.type("java.io.IOException");
 var ContentType = Packages.org.apache.http.entity.ContentType;
 //Packages which are not in Java Vanila or Nukkit (Necessary to install the Packages )
 ```
+
+View scripts by name:(I recommend using when finished loading all the scripts!)
+```javascript
+script.getScriptByName("here the name of the script!");
+```
+
