@@ -1,1 +1,49 @@
+#Supported Events:
+You can see what each event does in the Nukkit!
+You can tell us on discord or on the nukkit page if you want us to add more events!
 
+ - Enable
+ - Disable
+ - PlayerPreLoginEvent
+ - PlayerQuitEvent
+ - PlayerJoinEvent
+ - BlockBreakEvent
+ - BlockPlaceEvent
+ - PlayerCommandPreprocessEvent
+ - InventoryTransactionEvent
+ - PlayerInteractEvent
+ - ServerCommandEvent
+ - PlayerMoveEvent
+ - EntitySpawnEvent
+ - EntityDespawnEvent
+ - EntityDamageEvent
+ - PlayerDeathEvent
+ - EntityDeathEvent
+ - EntityTeleportEvent
+ - ItemDespawnEvent
+ - ItemSpawnEvent
+ - ProjectileHitEvent
+ - ProjectileLaunchEvent
+ - EntityLevelChangeEvent
+ - EntityInventoryChangeEvent
+ - EntityExplosionPrimeEvent
+ - BlockBurnEvent
+ - BlockFormEvent
+ - BlockGrowEvent
+ - SignChangeEvent
+ - ItemFrameDropItemEvent
+ - LeavesDecayEvent
+ - RedstoneUpdateEvent
+ - CraftItemEvent
+ - InventoryOpenEvent
+ - InventoryCloseEvent
+ - FurnaceBurnEvent
+ - FurnaceSmeltEvent
+ - InventoryPickupArrowEvent
+ - InventoryPickupItemEvent
+ - PotionApplyEvent
+ - PotionCollideEvent
+ - DataPacketReceiveEvent
+ - DataPacketSendEvent
+ - QueryRegenerateEvent
+ - PlayerChatEvent
