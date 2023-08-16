@@ -97,5 +97,5 @@ var playertest = Java.type("cn.nukkit.Player");
 var IOExeptionTest = Java.type("java.io.IOException");
 //java vanilla
 var ContentType = Packages.org.apache.http.entity.ContentType;
-//Packages which are not in Java Vanila or Nukkit 
+//Packages which are not in Java Vanila or Nukkit (Necessary to install the Packages )
 ```
