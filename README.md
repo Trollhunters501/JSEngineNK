@@ -105,3 +105,10 @@ View scripts by name:(I recommend using when finished loading all the scripts!)
 script.getScriptByName("here the name of the script!");
 ```
 
+isolated or private function
+```javascript
+//These are isolated functions that means that the variables and functions inside it cannot be executed and neither can events nor tasks be registered!
+(function(){
+  //code...
+})();
+```
