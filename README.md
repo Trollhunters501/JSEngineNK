@@ -1,6 +1,7 @@
 # JSEngineNK
 Nukkit plugin, enable to load javascript! very simple create systems!!
-Nukkit plugin - Allows you to load Javascript modules! 
+Nukkit plugin - Allows you to load Javascript modules!
+Runs ES6 version of partial JavaScript since it doesn't have Class and some stuff 
 # How to use?
 - Create javascript archive, example: mod.js
 - Drop archive in plugins/JSEngineNK/mod.js
