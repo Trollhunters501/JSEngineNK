@@ -1,4 +1,5 @@
 # JSEngineNK
+![JavaScript](https://img.shields.io/badge/JAVASCRIPT-grey?logo=Javascript) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) <br/>
 Nukkit plugin, enable to load javascript! very simple create systems!!
 Nukkit plugin - Allows you to load Javascript modules!
 Runs ES6 version of partial JavaScript since it doesn't have Class and some stuff 
