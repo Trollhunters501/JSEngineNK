@@ -114,3 +114,13 @@ isolated or private function
   //code...
 })();
 ```
+
+Import external libraries by URL:
+```javascript
+//import libraries by URL:
+LoadLib("https://github.com/MCFT-Server/Mskyblock/raw/master/Mskyblock.jar", "mskyblock.Main");
+//first URL parameter where is the bookshop, second: class to import
+
+//import library:
+var test = Packages.mskyblock.Main;
+```
