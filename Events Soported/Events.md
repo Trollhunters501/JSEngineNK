@@ -47,3 +47,4 @@ You can tell us on discord or on the nukkit page if you want us to add more even
  - DataPacketSendEvent
  - QueryRegenerateEvent
  - PlayerChatEvent
+ - PlayerServerSettingsRequestEvent
