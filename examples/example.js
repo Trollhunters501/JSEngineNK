@@ -68,9 +68,13 @@ script.getScriptByName("here the name of the script!");
   //code...
 })();
 
-//import libraries by URL:
+//import libraries from java by URL:
 LoadLib("https://github.com/MCFT-Server/Mskyblock/raw/master/Mskyblock.jar", "mskyblock.Main");
 //first URL parameter where is the bookshop, second: class to import
 
-//import library:
+//import library from java:
 var test = Packages.mskyblock.Main;
+
+//import libraries by URL
+load("https://example.com/exam.js");
+//Done!
