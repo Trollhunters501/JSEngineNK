@@ -1,8 +1,10 @@
 # JSEngineNK
 ![JavaScript](https://img.shields.io/badge/JAVASCRIPT-grey?logo=Javascript) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) <br/>
-Nukkit plugin, enable to load javascript! very simple create systems!!
+Nukkit plugin, enable to load javascript! very simple create systems!!<br/>
+With the Power of the Nashorn Engine!
 Nukkit plugin - Allows you to load Javascript modules!
-Runs ES6 version of partial JavaScript since it doesn't have Class and some stuff 
+Runs ES6 version of partial JavaScript since it doesn't have Class and some stuff
+Credits to the Original Plugin: https://cloudburstmc.org/resources/modloader.108/
 # How to use?
 - Create javascript archive, example: mod.js
 - Drop archive in plugins/JSEngineNK/mod.js
@@ -70,7 +72,7 @@ script.addEventListener("PlayerJoinEvent", function(event){
 });
 // ready, start your server and test!
 ```
-
+See the list of supported Events: https://github.com/Trollhunters501/JSEngineNK/blob/master/Events Soported/Events.md
 - Create Config
 ```javascript
 var config = manager.createConfig(manager.getFile("folder", "archive"), 2); // 2 = Config.YAML
@@ -88,7 +90,7 @@ script.registerScript({
     website: "https://github.com/Trollhunters501/JSEngineNK/",
     authors: ["Creadores Program & RedstoneAlmeida"]
 });
-//You can register your script so that it appears in the list of scripts with the command /scripts or also with the command /version or /ver
+//You can register your script so that it appears in the list of scripts with the command /scripts or also with the command /version script or /ver script
 //The mandatory parameters are: author or authors, name, version and description optional: website
 ```
 
