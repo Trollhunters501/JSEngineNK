@@ -48,3 +48,20 @@ You can tell us on discord or on the nukkit page if you want us to add more even
  - QueryRegenerateEvent
  - PlayerChatEvent
  - PlayerServerSettingsRequestEvent
+ - PlayerSettingsRespondedEvent
+ - PlayerGameModeChangeEvent
+ - LightningStrikeEvent
+ - PlayerAchievementAwardedEvent
+ - PlayerBedEnterEvent
+ - PlayerBedLeaveEvent
+ - PlayerChangeSkinEvent
+ - PlayerKickEvent
+ - EntityEnterVehicleEvent
+ - EntityExitVehicleEvent
+ - VehicleCreateEvent
+ - VehicleDamageEvent
+ - VehicleDestroyEvent
+ - VehicleMoveEvent
+ - VehicleUpdateEvent
+ - InventoryMoveItemEvent
+ - PlayerInvalidMoveEvent
