@@ -42,3 +42,9 @@ function fromBase64(s) {
     const ba = s instanceof ByteArray? s : String(s).bytes;
     return new JString(Base64.decoder.decode(ba));
 }
+function btoa(s){
+    return toBase64(s);
+}
+function atob(s){
+    return fromBase64(s);
+}
