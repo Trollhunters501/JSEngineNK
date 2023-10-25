@@ -68,13 +68,55 @@ script.getScriptByName("here the name of the script!");
   //code...
 })();
 
-//import libraries from java by URL:
-LoadLib("https://github.com/MCFT-Server/Mskyblock/raw/master/Mskyblock.jar", "mskyblock.Main");
-//first URL parameter where is the bookshop, second: class to import
-
-//import library from java:
-var test = Packages.mskyblock.Main;
+//import libraries from java by Maven:
+// Define Maven dependencies for the script
+var MAVEN_DEPENDENCIES = ['com.h2database:h2:1.4.192', 'org.apache.commons:commons-dbcp2:2.1.1'];
+// Create class loader instance.
+var L = new NnClassLoader({ maven: MAVEN_DEPENDENCIES });
+// Look at the actual list of jars resolved by the class loader.
+for each(var url in L.getUrls()) print(url);
+// Import class similarly to Java.type
+var BasicDataSource = L.type('org.apache.commons.dbcp2.BasicDataSource');
+// Work with imported classes as usual
+var ds = new BasicDataSource();
+// ...
 
 //import libraries by URL
 load("https://example.com/exam.js");
+//Done!
+
+//You must create a const variable with the Class() function and with 2 parameters The name of the variable will be the name of your class!
+
+//The first parameter is always Object except if you want to extend another JavaScript class In that case just change Object to the name of the class (The class should have already been established)
+//The second parameter is the class functions!(If you extend any class, for no reason do you give your functions the same name as the extended classes (The JavaScript engine gets confused and crashes))
+const Says = Class(Object, {
+  say: function(){
+      console.info('Hello');
+   }
+});
+//Create a call to the class:
+var Hey = new Says();
+//Call the function:
+Hey.say();
+//Output: Hello
+
+
+//Extend a Class:
+//Extends the previous class
+const Greeting = Class(Says, {
+  //Respecting that the function is not repeated, in this case you cannot repeat say()
+  hi: function(){
+    //Call to the class that extends:
+    this.say();
+    //Plus extra code
+    console.info('Console!');
+  }
+});
+//We call the class the same as before
+var HiCon = new Greeting();
+HiCon.hi();
+//Output: Hello
+//Console!
+
+
 //Done!
