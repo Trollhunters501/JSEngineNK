@@ -40,7 +40,7 @@ function functionUsed(sender, args){
         sender.sendMessage('You used incorrect!');
         return;
     }
-    var name = args[0];
+    let name = args[0];
     sender.sendMessage("You writer: " + name); // send Message to sender
     // sender.sendMessage(manager.format("You writer: %s", name)); format your message
 }
@@ -48,9 +48,9 @@ function functionUsed(sender, args){
 
 - Create Basic Tasks:
 ```javascript
-manager.createTask("tasknormal", 20 * 20);
+manager.createTask("tasknormal", 20);
 
-manager.createLoopTask("taskloop", 20 * 20);
+manager.createLoopTask("taskloop", 20);
 
 function tasknormal(currentTick){
     print('I tasknormal!');
@@ -64,7 +64,7 @@ function taskloop(currentTick){
 - Run Events:
 ```javascript
 script.addEventListener("PlayerJoinEvent", function(event){
-    var player = event.getPlayer();
+    let player = event.getPlayer();
     player.sendMessage("welcome to Server!");
 });
 // ready, start your server and test!
@@ -186,6 +186,7 @@ Adder: https://raw.githubusercontent.com/maheshrajannan/java8Nashorn2/master/src
 NnClassLoader: https://cdn.rawgit.com/NashornTools/NnClassLoader/master/NnClassLoader.js
 ES6 from Nashorn: https://raw.githubusercontent.com/aesteve/nashorn-es6/master/src/main/resources/es6-shim.js
 Class from Nashorn: https://raw.githubusercontent.com/Trollhunters501/JSEngineNK/master/libs/Clases.js
+Polyfills from Nashorn Extra: https://raw.githubusercontent.com/Trollhunters501/JSEngineNK/master/libs/NewPolifills.js
 
 If you want to make plugins for your server, do not hesitate to Contact Us!
 Discord: https://discord.gg/mrmHcwxXff
