@@ -52,8 +52,30 @@ Object.entries = function( obj ){
   while (i--) resArray[i] = [ownProps[i], obj[ownProps[i]]]; 
   return resArray; 
 };
-Object.defineProperty(String.prototype, "", {
-  value: function(){
-    
+Object.defineProperty(String.prototype, "includes", {
+  value: function(searchString, position){
+    if (position==null)position=0;
+		if (this.indexOf(searchString,position)>-1){
+			return true;
+		}else{
+			return false;
+		}
+  }
+});
+Object.defineProperty(String.prototype, "include", {
+  value: function(searchString, position){
+    return this.includes(searchString, position);
+  }
+});
+Object.defineProperty(String.prototype, "padStart", {
+  value: function(targetLength, padString){
+    if (padString==null)padString=" ";
+		return padString.repeat(targetLength-this.length)+this;
+  }
+});
+Object.defineProperty(String.prototype, "padEnd", {
+  value: function(targetLength, padString){
+    if (padString==null)padString=" ";
+		return this+padString.repeat(targetLength-this.length);
   }
 });
