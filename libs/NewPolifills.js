@@ -48,7 +48,7 @@ Object.assign = function (t) {
   } return t; 
 }; 
 Object.entries = function( obj ){ 
-  var ownProps = Object.keys( obj ), i = ownProps.length, resArray = new Array(i); 
+  let ownProps = Object.keys( obj ), i = ownProps.length, resArray = new Array(i); 
   while (i--) resArray[i] = [ownProps[i], obj[ownProps[i]]]; 
   return resArray; 
 };
@@ -79,3 +79,28 @@ Object.defineProperty(String.prototype, "padEnd", {
 		return this+padString.repeat(targetLength-this.length);
   }
 });
+Object.defineProperty(Array.prototype, 'flatMap', { 
+  value: function (lambda) {
+	  return [].concat.apply([],this.map(lambda));
+  }
+});
+Object.is = function(x,y) {
+		if (x === y) {
+			return x !== 0 || 1 / x === 1 / y;
+		}
+		return x !== x && y !== y;
+	}
+Object.values=function(obj) {
+		let ary=[];
+		for (var key in obj){
+			ary.push(obj[key]);
+		}
+		return ary;
+	}
+Object.getOwnPropertyDescriptors=function(obj){
+		let ret={};
+		for(var key in obj){
+			ret[key]=Object.getOwnPropertyDescriptor(obj,key);
+		}
+		return ret;
+	}
