@@ -7,7 +7,7 @@ function functiondele(sender, args){
         sender.sendMessage('Você digitou incorretamente');
         return;
     }
-    var name = args[0];
+    let name = args[0];
     sender.sendMessage("Você digitou: " + name); // formata para adicionar mensagens
     // sender.sendMessage(manager.format("Você digitou: %s", name)); outra forma de adicionar mensagens com {NAME}
 }
