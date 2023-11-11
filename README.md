@@ -1,17 +1,23 @@
 # JSEngineNK
-![JavaScript](https://img.shields.io/badge/JAVASCRIPT-grey?logo=Javascript) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) <br/>
-Nukkit plugin, enable to load javascript! very simple create systems!!<br/>
+![JavaScript](https://img.shields.io/badge/JAVASCRIPT-grey?logo=Javascript) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+Nukkit plugin, enable to load javascript! very simple create systems!!
+
 With the Power of the Nashorn Engine!
+
 Nukkit plugin - Allows you to load Javascript modules!
+
 Runs ES6 version of partial JavaScript since it doesn't have Class and some stuff
+
 Credits to the Original Plugin: https://cloudburstmc.org/resources/modloader.108/
+
 # How to use?
 - Create javascript archive, example: mod.js
 - Drop archive in plugins/JSEngineNK/mod.js
 - Create your code!
 - Start your server! Instantly run
 
-- examples can be found (here) [https://github.com/Trollhunters501/JSEngineNK/tree/master/examples]
+- examples can be found [here](https://github.com/Trollhunters501/JSEngineNK/tree/master/examples)
 
 # Basic JavaScript API loaded!
 - Global Variables:
