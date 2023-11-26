@@ -75,7 +75,7 @@ script.addEventListener("PlayerJoinEvent", function(event){
 });
 // ready, start your server and test!
 ```
-See the list of supported Events: https://github.com/Trollhunters501/JSEngineNK/blob/master/Events%20Soported/Events.md
+
 - Create Config
 ```javascript
 var config = manager.createConfig(manager.getFile("folder", "archive"), 2); // 2 = Config.YAML
