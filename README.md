@@ -182,6 +182,17 @@ HiCon.hi();
 //Done!
 ```
 
+Extend Java classes:
+```js
+var ClassExample = Java.type("class.extend.java");
+var extendC = Java.extend(ClassExample); //Also works with classes imported with the Nnclassloader library
+var myclassextend = new extendC(){
+  onEnable: function(){
+     aFunctionOfTheExtendedClass("hello!");
+  }//Useful for using @ in JSEngineNK without coding directly in Java and leaving your class empty!
+}
+```
+
 Default libraries in the plugin:
 Fetch: https://raw.githubusercontent.com/Trollhunters501/Fetch-API-Nashorn/main/Creadores Program/Nashorn NK/Fetch API.js
 UnderScoreJS: https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js
