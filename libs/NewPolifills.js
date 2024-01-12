@@ -9,6 +9,21 @@ Object.defineProperty(String.prototype, 'trimStart', {
     return str; 
   } 
 }); 
+Object.defineProperty(String.prototype, "insert", {
+	value: function(index, string){
+		if (index > 0) {
+			if (string.charCodeAt(0) == 13){
+				string = "\n";
+			}
+			let ret = this.substring(0, index) + string + this.substring(index, this.length);
+			return ret;
+		}else if (index == this.length) {
+			return this + string;
+		}else {
+			return string + this;
+		}
+	}
+});
 Object.defineProperty(String.prototype, 'trimEnd', { 
   value: function(){ 
     let strn = this.toString(); 
