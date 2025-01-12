@@ -12,9 +12,7 @@ const Class = function ($superclass, config) {
                 this.$super[methodName] = this.$super[methodName].bind(this);
             } 
         }.bind(this));
-        if(this.$constructor != null){
-            this.$constructor(config);
-        }
+        this.$constructor && this.$constructor(config);
     };
     self.prototype = new $superclass(config);
     self.prototype.constructor = self;
