@@ -14,7 +14,7 @@ const Class = function ($superclass, config) {
         }.bind(this));
         this.$constructor && this.$constructor(config);
     };
-    self.prototype = new $superclass(config);
+    config && (self.prototype = Object.assign(Object.create($superclass.prototype), config));
     self.prototype.constructor = self;
     return self;
 };
