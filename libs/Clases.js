@@ -9,7 +9,9 @@ const Class = function ($superclass, config, configStatic) {
         Object.getOwnPropertyNames($superclass.prototype).forEach(function(methodName){ 
             if (typeof this.$super[methodName] === 'function') { 
                 this.$super[methodName] = this.$super[methodName].bind(this);
-            } 
+            }else if(this.$super[methodName] != this[methodName]){
+                this.$super[methodName] = this[methodName];
+            }
         }.bind(this));
         this.$constructor && this.$constructor(config);
     };
