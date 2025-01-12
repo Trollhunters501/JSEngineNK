@@ -6,7 +6,17 @@ const Class = function ($superclass, config) {
     let self = function (config) {
         // Object.assign or $.extend or ...
         config && Object.assign(this, config);
+        this.$super = Object.create($superclass.prototype);
+        Object.getOwnPropertyNames($superclass.prototype).forEach(function(methodName){ 
+            if (typeof this.$super[methodName] === 'function') { 
+                this.$super[methodName] = this.$super[methodName].bind(this);
+            } 
+        }.bind(this));
+        if(this.$constructor != null){
+            this.$constructor(config);
+        }
     };
     self.prototype = new $superclass(config);
+    self.prototype.constructor = self;
     return self;
 };
